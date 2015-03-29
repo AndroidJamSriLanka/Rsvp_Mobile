@@ -1,9 +1,9 @@
-# An android application for the IEEE ICCSE 2015
-	-The 10th International Conference on Computer Science & Education
+# An android app for the Virtual Learning Environment for the UCSC Students.
 
 #Problem Definition
-There is no way  to get the data and venue of IEEE ICCSE 2015.
+ University of Colombo School of Computing undergraduate student do not have a way to see upcoming assignments,other important events and notices easily.
+ They have to log in to the UGVLE and go in to the each subject to check whether is an assignment or is there any new notices.
 
-#My solution
-An android application to provide a user login to access the schedule, attendee list of profiles, speaker list and profiles, sponsers, links and connections with Face Book, Twitter etc.
-And also I hope to exchange contacts via a bar code scanner.
+#My solution is
+
+ To build an android app to aware users on upcoming events and assignments.  
