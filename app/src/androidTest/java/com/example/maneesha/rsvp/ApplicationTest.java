@@ -1,4 +1,4 @@
-package com.example.maneesha.sunshine;
+package com.example.maneesha.rsvp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
