@@ -5,4 +5,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="btn_style_blue" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/btn</item>
+    </style>
+
 </resources>

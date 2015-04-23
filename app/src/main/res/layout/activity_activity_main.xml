@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="WELCOME TO RSVP"
+        android:text="@string/welcome"
         android:id="@+id/textView"
         android:textColor="#ff4960c0"
         android:textStyle="bold"
@@ -26,16 +26,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/events"
+        android:src="@drawable/upcoming_events"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
+    <Button style="@style/btn_style_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check your events with us"
+        android:text="@string/Check"
         android:id="@+id/button"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="63dp"
         android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView" />
