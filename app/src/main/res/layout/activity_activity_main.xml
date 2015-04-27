@@ -10,34 +10,40 @@
     >
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/welcome"
-        android:id="@+id/textView"
-        android:textColor="#ff4960c0"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="91dp" />
+    <TabHost
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/tabHost">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/upcoming_events"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-    <Button style="@style/btn_style_blue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Check"
-        android:id="@+id/button"
-        android:layout_marginTop="63dp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+            <TabWidget
+                android:id="@+id/"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"></TabWidget>
 
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 </RelativeLayout>

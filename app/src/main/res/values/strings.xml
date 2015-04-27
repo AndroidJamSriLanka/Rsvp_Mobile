@@ -10,5 +10,7 @@
     <string name="welcome">WELCOME TO RSVP</string>
     <string name="reg">Register</string>
     <string name="title_activity_list_view">Up coming events </string>
+    <string name="title_activity_tab1">Tab1</string>
+    <string name="title_activity_tab2">Tab2</string>
 
 </resources>
