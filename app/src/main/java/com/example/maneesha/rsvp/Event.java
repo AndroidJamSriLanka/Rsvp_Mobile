@@ -1,11 +1,15 @@
 package com.example.maneesha.rsvp;
 
 
+import android.graphics.Bitmap;
+
+import java.io.Serializable;
+
 /**
  * Created by Maneesha on 01-May-15.
  */
-public class Event {
-    public String image_url;
+public class Event implements Serializable{
+    public Bitmap bitmap;
     public String name;
     public String date;
     public String start_time;
@@ -13,14 +17,24 @@ public class Event {
     public String org_name;
 
 
-    public Event(String n, String d, String i){
+    public Event(String name, String date, String start_time,String end_time,String org_name, Bitmap bitmap){
 
-        image_url =i;
-        name =n;
-        date =d;
-        start_time =s;
-        end_time =e;
-        org_name =o;
+        this.bitmap =bitmap;
+        this.name =name;
+        this.date =date;
+        this.start_time =start_time;
+        this.end_time =end_time;
+        this.org_name =org_name;
+
+    }
+    public Event(String name, String date, String start_time,String end_time,String org_name){
+
+        //this.bitmap =bitmap;
+        this.name =name;
+        this.date =date;
+        this.start_time =start_time;
+        this.end_time =end_time;
+        this.org_name =org_name;
 
     }
 }

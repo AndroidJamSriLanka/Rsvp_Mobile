@@ -3,6 +3,7 @@
     package="com.example.maneesha.rsvp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,6 +11,7 @@
         android:label="@string/RSVP"
         android:theme="@style/AppTheme" >
         <activity
+                android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".ActivityMain"
             android:label="@string/RSVP" >
             <intent-filter>

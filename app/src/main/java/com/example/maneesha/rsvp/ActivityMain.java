@@ -2,6 +2,9 @@ package com.example.maneesha.rsvp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,11 +13,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
 
+import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class ActivityMain extends Activity implements AsyncResponse{
@@ -23,27 +30,14 @@ public class ActivityMain extends Activity implements AsyncResponse{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_main);
-        WebService webService = new WebService(ActivityMain.this,"get","Loading");
-        webService.asyncResponse=this;
-        webService.execute("http://www.json-generator.com/api/json/get/bZxjfqqLfS");
-
-
-
-       /*TabHost tabHost = (TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
-
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("Upcoming Events");
-        tabSpec.setContent(R.id.tab1);
-        tabSpec.setIndicator("Upcoming Events");
-        tabHost.addTab(tabSpec);
-
-        tabSpec = tabHost.newTabSpec("Registered Events");
-        tabSpec.setContent(R.id.tab2);
-        tabSpec.setIndicator("Registered Events");
-        tabHost.addTab(tabSpec);
-        */
-
-
+        ConnectionTester ct = new ConnectionTester();
+        if(ct.hasInternet(ActivityMain.this)) {
+            load_content();
+        }
+        else{
+            ct.internetDialog(ActivityMain.this, ActivityMain.this);
+            Toast.makeText(ActivityMain.this, "No Internet", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -66,6 +60,12 @@ public class ActivityMain extends Activity implements AsyncResponse{
         return super.onOptionsItemSelected(item);
     }
 
+    public void load_content(){
+        WebService webService = new WebService(ActivityMain.this,"get","Loading");
+        webService.asyncResponse=this;
+        webService.execute("http://www.json-generator.com/api/json/get/bUlQAxseOG?indent=2");
+    }
+
     @Override
     public void processFinish(String output) {
         System.out.println(output);
@@ -74,17 +74,33 @@ public class ActivityMain extends Activity implements AsyncResponse{
             ArrayList<Event> arrayList = new ArrayList<Event>();
             JSONArray jsonArray = new JSONArray(output);
             for(int i=0; i<jsonArray.length(); i++){
+                LoadImage loadImage= new LoadImage();
+
                 JSONObject jo = new JSONObject(jsonArray.getString(i));
-                arrayList.add(new Event(jo.getString("image_url"),jo.getString("name"),jo.getString("date")));
+                Bitmap bitmap = loadImage.execute(jo.getString("cover_url")).get();
+                arrayList.add(new Event(jo.getString("name"),jo.getString("date"), jo.getString("start_time"),
+                        jo.getString("end_time"),jo.getString("org_name"),bitmap));
             }
 
             MyAdapter myAdapter = new MyAdapter(ActivityMain.this,arrayList);
             ListView listView = (ListView)findViewById(R.id.listView);
             listView.setAdapter(myAdapter);
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public class LoadImage extends AsyncTask<String, String, Bitmap> {
+        Bitmap bitmap;
+        public Bitmap doInBackground(String... args) {
+            try {
+                bitmap = BitmapFactory.decodeStream((InputStream) new URL(args[0]).getContent());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
     }
 }

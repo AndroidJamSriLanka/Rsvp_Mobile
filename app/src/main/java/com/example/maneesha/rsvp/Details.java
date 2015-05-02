@@ -1,6 +1,8 @@
 package com.example.maneesha.rsvp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,21 +14,30 @@ public class Details extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        Bundle intent = getIntent().getExtras();
+        Event event=(Event)intent.get("info");
+
+        Bitmap bitmap = event.bitmap;
+        String name = event.name;
+        String date  = event.date;
+        String org_name = event.org_name;
+        String start_time = event.start_time;
+        String end_time = event.end_time;
+
+
+
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.details, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
