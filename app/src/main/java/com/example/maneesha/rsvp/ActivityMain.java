@@ -7,17 +7,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TabHost;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ActivityMain extends Activity {
+import java.util.ArrayList;
+
+
+public class ActivityMain extends Activity implements AsyncResponse{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_main);
+        WebService webService = new WebService(ActivityMain.this,"get","Loading");
+        webService.asyncResponse=this;
+        webService.execute("http://www.json-generator.com/api/json/get/bZxjfqqLfS");
 
-        TabHost tabHost = (TabHost)findViewById(R.id.tabHost);
+
+
+       /*TabHost tabHost = (TabHost)findViewById(R.id.tabHost);
         tabHost.setup();
 
         TabHost.TabSpec tabSpec = tabHost.newTabSpec("Upcoming Events");
@@ -29,6 +41,7 @@ public class ActivityMain extends Activity {
         tabSpec.setContent(R.id.tab2);
         tabSpec.setIndicator("Registered Events");
         tabHost.addTab(tabSpec);
+        */
 
 
     }
@@ -51,5 +64,27 @@ public class ActivityMain extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void processFinish(String output) {
+        System.out.println(output);
+
+        try {
+            ArrayList<Event> arrayList = new ArrayList<Event>();
+            JSONArray jsonArray = new JSONArray(output);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jo = new JSONObject(jsonArray.getString(i));
+                arrayList.add(new Event(jo.getString("image_url"),jo.getString("name"),jo.getString("date")));
+            }
+
+            MyAdapter myAdapter = new MyAdapter(ActivityMain.this,arrayList);
+            ListView listView = (ListView)findViewById(R.id.listView);
+            listView.setAdapter(myAdapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 }
