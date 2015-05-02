@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.example.maneesha.rsvp.R;
 
 public class Details extends Activity {
@@ -17,12 +20,19 @@ public class Details extends Activity {
         Bundle intent = getIntent().getExtras();
         Event event=(Event)intent.get("info");
 
-        Bitmap bitmap = event.bitmap;
+        //Bitmap bitmap = event.bitmap;
         String name = event.name;
         String date  = event.date;
         String org_name = event.org_name;
         String start_time = event.start_time;
         String end_time = event.end_time;
+
+        TextView tv_name = (TextView)findViewById(R.id.textView);
+        ImageView imageView = (ImageView)findViewById(R.id.imageView2);
+        TextView tv_date =(TextView)findViewById(R.id.tv_date);
+        TextView org = (TextView)findViewById(R.id.org);
+        TextView s_Time = (TextView)findViewById(R.id.s_time);
+        TextView e_Time = (TextView)findViewById(R.id.e_time);
 
 
 

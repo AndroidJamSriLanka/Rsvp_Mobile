@@ -62,23 +62,39 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/org"
-            android:id="@+id/tv_title"/>
+            android:id="@+id/org"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout3"
-        android:id="@+id/linearLayout4"
+        android:layout_below="@+id/linearLayout4"
+        android:id="@+id/linearLayout5"
         android:paddingTop="5dp"
         android:layout_marginLeft="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/org"
-            android:id="@+id/tv_title"/>
+            android:text="@string/stime"
+            android:id="@+id/s_time"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout5"
+        android:id="@+id/linearLayout6"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/etime"
+            android:id="@+id/e_time"/>
     </LinearLayout>
 
 </RelativeLayout>
