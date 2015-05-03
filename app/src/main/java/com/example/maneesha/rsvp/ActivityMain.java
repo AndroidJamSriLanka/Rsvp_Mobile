@@ -61,7 +61,7 @@ public class ActivityMain extends Activity implements AsyncResponse{
     }
 
     public void load_content(){
-        WebService webService = new WebService(ActivityMain.this,"get","Loading");
+        WebService webService = new WebService(ActivityMain.this,"get","WELCOME");
         webService.asyncResponse=this;
         webService.execute("http://www.json-generator.com/api/json/get/bUlQAxseOG?indent=2");
     }
