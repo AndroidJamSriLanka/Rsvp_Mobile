@@ -33,6 +33,7 @@ public class MyAdapter extends ArrayAdapter {
         TextView title =(TextView)convertView.findViewById(R.id.tv_title);
         TextView date =(TextView)convertView.findViewById(R.id.tv_date);
         Button button = (Button)convertView.findViewById(R.id.btn_details);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

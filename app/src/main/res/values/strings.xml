@@ -6,17 +6,17 @@
     <string name="action_settings">Settings</string>
     <string name="RSVP">RSVP</string>
     <string name="title_activity_check">check</string>
-    <string name="Check">Check Your Events With Us</string>
-    <string name="welcome">WELCOME TO RSVP</string>
-    <string name="reg">Register</string>
-    <string name="title_activity_list_view">Up coming events </string>
-    <string name="title_activity_tab1">Tab1</string>
-    <string name="title_activity_tab2">Tab2</string>
-    <string name="title_activity_details">Details</string>
     <string name="name">Name</string>
     <string name="org">Organization name</string>
     <string name="stime">Starting time</string>
     <string name="etime">Ending time</string>
     <string name="name1">name1</string>
+    <string name="Date">Date : </string>
+    <string name="orgText">Organization : </string>
+    <string name="Ending">To : </string>
+    <string name="Starting">From : </string>
+    <string name="join"> JOIN WITH US !!!</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_register">Register</string>
 
 </resources>

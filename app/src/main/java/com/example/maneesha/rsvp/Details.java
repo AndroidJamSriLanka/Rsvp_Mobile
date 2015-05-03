@@ -34,6 +34,11 @@ public class Details extends Activity {
         TextView s_Time = (TextView)findViewById(R.id.s_time);
         TextView e_Time = (TextView)findViewById(R.id.e_time);
 
+        tv_name.setText(event.name);
+        tv_date.setText(event.date);
+        org.setText(event.org_name);
+        s_Time.setText(event.start_time);
+        e_Time.setText(event.end_time);
 
 
 
@@ -52,6 +57,13 @@ public class Details extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+
+
         return super.onOptionsItemSelected(item);
+
+
+
+
     }
 }
